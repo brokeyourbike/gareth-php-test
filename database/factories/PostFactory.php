@@ -17,7 +17,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'context' => fake()->text(),
+            'content' => fake()->text(),
             'image' => fake()->uuid() . ".png",
         ];
     }
