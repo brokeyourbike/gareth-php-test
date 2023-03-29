@@ -60,7 +60,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/paratest --coverage-clover=coverage.xml
+      run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
     - name: Upload coverage to codeclimate
       uses: paambaati/codeclimate-action@v3.0.0
