@@ -28,8 +28,8 @@ jobs:
     - name: Install Node.js dependencies
       run: npm install
 
-    - name: Build frontend (admin)
-      run: npm run prod
+    - name: Build frontend
+      run: npm run build
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
