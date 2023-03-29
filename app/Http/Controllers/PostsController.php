@@ -26,7 +26,7 @@ class PostsController extends Controller
     {
         return view('share', [
             'content' => $post->content,
-            'imageUrl' => Storage::url("$post->image"),
+            'imageUrl' => Storage::url($post->image),
             'shareUrl' => url("/share/{$post->id}"),
         ]);
     }
