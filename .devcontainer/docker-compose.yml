@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: honestysales
+      MYSQL_DATABASE: laravel
     volumes:
       - 'data-mysql:/var/lib/mysql'
 
