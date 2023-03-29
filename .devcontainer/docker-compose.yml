@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: "8.1"
+        NODE_VERSION: "18"
+    volumes:
+      - ..:/workspace:cached
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:db
+    # Uncomment the next line to use a non-root user for all processes.
+    user: vscode
+
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: honestysales
+    volumes:
+      - 'data-mysql:/var/lib/mysql'
+
+  adminer:
+    image: adminer:4
+    restart: unless-stopped
+    network_mode: service:db
+
+volumes:
+  data-mysql:
